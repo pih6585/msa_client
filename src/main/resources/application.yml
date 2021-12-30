@@ -1,15 +1,24 @@
 server:
-  port: 0
+  port: 8081
 
-spring:
-  application:
-    name: user-service
-
+## 이부분은 server쪽에 추가해야되는 거임 임시로 client에 넣어둔거임
+ # cloud:
+ #  gateway:
+ #     routes:
+ #       - id: first-service
+ ##         uri: http://localhost:8081/
+ #         predicates:
+ #           - Path=/first-service/**
+ #       - id: second-service
+ #           uri: http://localhost:8082/
+ #          predicates:
+  #            - Path=/second-service/**
+## ----------------------------------------------------------
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
-  instance:
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id}:${random.value}
+ ## instance:
+ ##   instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id}:${random.value}
