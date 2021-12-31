@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 0
 
 eureka:
   client:
@@ -7,10 +7,16 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
-    ## instance:
-    ##   instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id}:${random.value}
+    instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 spring:
   application:
     name: msa-first-Service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: h2-console
 
